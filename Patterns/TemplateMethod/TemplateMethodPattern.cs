@@ -2,17 +2,17 @@ namespace Patterns.TemplateMethod;
 
 public abstract class TemplateNode
 {
-    protected TemplateNode()
-    {
-        OnCreated();
-    }
-
     public string Render()
     {
         BeforeRender();
         string html = RenderCore();
         AfterRender(html);
         return html;
+    }
+
+    protected void Initialize()
+    {
+        OnCreated();
     }
 
     protected abstract string RenderCore();
@@ -37,6 +37,7 @@ public sealed class TemplateTextNode : TemplateNode
     public TemplateTextNode(string text)
     {
         Text = text;
+        Initialize();
     }
 
     protected override string RenderCore()
@@ -53,6 +54,7 @@ public class TemplateElementNode : TemplateNode
     public TemplateElementNode(string tagName)
     {
         TagName = tagName;
+        Initialize();
     }
 
     public void AddChild(TemplateNode child)

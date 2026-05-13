@@ -6,8 +6,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Runners\**\*.cs" />
-    <EmbeddedResource Remove="Runners\**\*" />
-    <None Remove="Runners\**\*" />
+    <ProjectReference Include="..\..\kpz mkr.csproj" />
   </ItemGroup>
 </Project>
